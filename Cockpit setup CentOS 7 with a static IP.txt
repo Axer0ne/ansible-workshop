@@ -1,0 +1,18 @@
+cd /etc/sysconfig/network-scripts
+sudo nano ifcfg-eth0
+
+IPADDR
+PREFIX
+GATEWAY
+DNS1
+DNS2
+DNS3
+
+sudo systemctl restart network
+sudo systemctl restart NetworkManager
+
+
+sudo yum install cockpit
+sudo systemctl enable cockpit.socket
+sudo firewall-cmd --permanent --zone=public --add-service=cockpit
+sudo firewall-cmd --reload

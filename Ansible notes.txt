@@ -1,0 +1,21 @@
+sudo dnf install ansible -y
+
+nano inventory
+#contents
+IP addresses of servers
+#end of file
+
+ansible all --key-file ~./ssh/ansible -i inventory -m ping
+
+nano ansible.cfg
+#contents
+[defaults]
+inventory = inventory
+private_key_file = ~/.ssh/ansible
+#end of file
+
+ansible all -m ping
+ansible all --list-hosts
+ansible all -m gather_facts
+ansible all -m gather_facts --limit <ip_addr>
+
