@@ -13,6 +13,6 @@ sudo systemctl restart NetworkManager
 
 
 sudo yum install cockpit
-sudo systemctl enable cockpit.socket
+sudo systemctl enable --now cockpit.socket
 sudo firewall-cmd --permanent --zone=public --add-service=cockpit
 sudo firewall-cmd --reload
