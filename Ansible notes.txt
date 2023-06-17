@@ -18,4 +18,12 @@ ansible all -m ping
 ansible all --list-hosts
 ansible all -m gather_facts
 ansible all -m gather_facts --limit <ip_addr>
+ansible all -m yum -a update_cache=true
+ansible all -m yum -a update_cache=true --become --ask-become-pass (elevated privileges, same as sudo)
+ansible all -m yum -a "name=vim state=latest" --become --ask-become-pass
+
+ansible-playbook --ask-become-pass install_apache.yml
+ansible-playbook --ask-become-pass install_cockpit.yml
+
+
 
