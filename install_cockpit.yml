@@ -5,6 +5,7 @@
   - name: Update repository index
     yum:
       update_cache: yes
+    when: ansible_distribution == "CentOS"
 
   - name: Install Cockpit
     yum:
