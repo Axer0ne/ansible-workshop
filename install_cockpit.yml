@@ -1,0 +1,26 @@
+- name: Install and configure Cockpit for CentOS 7
+  hosts: all
+  become: true
+  tasks:
+  - name: Install Cockpit
+    yum:
+      name: cockpit
+      state: present
+
+  - name: Start Cockpit service
+    service:
+      name: cockpit.socket
+      state: started
+      enabled: true
+
+  - name: Open Cockpit port on the firewall
+    firewalld:
+      service: cockpit
+      permanent: yes
+      state: enabled
+      immediate: yes
+
+  - name: Reload firewall
+    service:
+      name: firewalld
+      state: reloaded
