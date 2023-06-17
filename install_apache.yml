@@ -11,6 +11,13 @@
       name: httpd
       state: present
 
+  - name: Install PHP and PHP modules
+    yum:
+      name:
+      - php
+      - php-mysql
+      state: present
+
   - name: Add Apache service to firewall
     firewalld:
       service: http
