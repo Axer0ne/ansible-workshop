@@ -1,17 +1,17 @@
 - name: Install and configure Apache on CentOS 7
-  hosts: all
+  hosts: CentOS
   become: true
   tasks:
   - name: Update repository index
-    yum:
+    package:
       update_cache: yes
 
   - name: Install Apache, PHP and its' modules
-    yum:
+    package:
       name:
-      - php
-      - php-mysql
-      - httpd
+      - "{{ apache_package }}"
+      - "{{ php_package }}"
+      - "{{ php_sql_module }}"
       state: present
 
   - name: Add Apache service to firewall

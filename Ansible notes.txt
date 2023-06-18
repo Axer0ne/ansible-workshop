@@ -27,5 +27,11 @@ ansible-playbook --ask-become-pass install_cockpit.yml
 
 when: ansible_distribution == (or in [""]) "SomeDistro"
 
+- name: Install Apache, PHP and its' modules
+    yum:
+      name:
+       - "{{ apache_package }}"
+			 - "{{ php_package }}"
+      state: present
 
 
