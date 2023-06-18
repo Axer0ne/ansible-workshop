@@ -35,3 +35,5 @@ when: ansible_distribution == (or in [""]) "SomeDistro"
       state: present
 
 
+ansible-playbook --list-tags install_apache.yml
+ansible-playbook --tags centos --ask-become-pass install_apache.yml
