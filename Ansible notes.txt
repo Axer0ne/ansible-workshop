@@ -37,3 +37,15 @@ when: ansible_distribution == (or in [""]) "SomeDistro"
 
 ansible-playbook --list-tags install_apache.yml
 ansible-playbook --tags centos --ask-become-pass install_apache.yml
+
+- name: Push file to /var/www/html/
+  hosts: CentOS
+  become: true
+  tasks:
+  - name: Push the file
+    copy:
+      src: push_me.txt
+      dest: /var/www/html/push_me.txt
+      owner: root
+      group: root
+      mode: 0644

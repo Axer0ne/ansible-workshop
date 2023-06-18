@@ -1,0 +1,32 @@
+- name: Install unzip and terraform on CentOS 7
+  hosts: CentOS
+  become: yes
+
+  tasks:
+  - name: Update package cache
+    yum:
+      update_cache: yes
+
+  - name: Install unzip package
+    yum:
+      name: unzip
+      state: present
+
+  - name: Download Terraform zip file
+    get_url:
+      url: https://releases.hashicorp.com/terraform/0.14.11/terraform_0.14.11_linux_amd64.zip
+      dest: /tmp/terraform_0.14.11_linux_amd64.zip
+
+  - name: Extract Terraform zip file
+    unarchive:
+      src: /tmp/terraform_0.14.11_linux_amd64.zip
+      dest: /usr/local/bin/
+      remote_src: yes
+      mode: '0755'
+      owner: root
+      group: root
+
+  - name: Remove temporary Terraform zip file
+    file:
+      path: /tmp/terraform_0.14.11_linux_amd64.zip
+      state: absent
