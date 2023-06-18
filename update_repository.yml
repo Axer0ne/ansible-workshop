@@ -1,0 +1,7 @@
+- name: Update repository index on CentOS 7 - yum
+  hosts: CentOS
+  become: true
+  tasks:
+  - name: Update repository index
+    yum:
+      update_cache: yes
