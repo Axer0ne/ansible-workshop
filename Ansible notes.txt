@@ -85,3 +85,6 @@ make files alongside tasks
 add for example something.html
 
 ansible-playbook something.yml
+
+add host_vars directory, create yml file with the ip/hostname of a server
+handlers=triggers (on a separate folder)
