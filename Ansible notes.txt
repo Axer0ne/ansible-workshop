@@ -56,3 +56,23 @@ ansible-playbook --tags centos --ask-become-pass install_apache.yml
       path: /var/www/html/push_me.txt
       regexp: "Pushed file."
       replace: "Ansible is fun!"
+
+ - name: Create a user
+    user:
+      name: admin
+      groups: wheel
+
+ - name: Add SSH key
+    authorized_key:
+      user: admin
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINRU7hMEVE7sGlgXomTl23caimQ2T4XujRPplFA1Lpmc Ansible"
+
+  - name: Add sudoers file for admin
+    copy:
+      src: sudoer_admin
+      dest: /etc/sudoers.d/admin
+      owner: root
+      group: wheel
+      mode: 0440
+
+Bootstrap - Full server config
