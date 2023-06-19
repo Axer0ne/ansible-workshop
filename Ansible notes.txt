@@ -76,3 +76,12 @@ ansible-playbook --tags centos --ask-become-pass install_apache.yml
       mode: 0440
 
 Bootstrap - Full server config
+
+roles: web_servers, file_servers etc., have to create them
+create directories
+create tasks directory inside new directories
+put yml there (main.yml) (taskbook) - no hosts etc.
+make files alongside tasks
+add for example something.html
+
+ansible-playbook something.yml
