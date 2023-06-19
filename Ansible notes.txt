@@ -49,3 +49,10 @@ ansible-playbook --tags centos --ask-become-pass install_apache.yml
       owner: root
       group: root
       mode: 0644
+
+
+- name: Change the text
+    replace:
+      path: /var/www/html/push_me.txt
+      regexp: "Pushed file."
+      replace: "Ansible is fun!"
