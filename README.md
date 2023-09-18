@@ -1,3 +1,3 @@
 # ansible-workshop
 
-Ansible workshop repository.
+Ansible workshop repository. Updating in the future.
